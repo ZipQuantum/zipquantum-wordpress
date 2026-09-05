@@ -43,3 +43,11 @@ php bin/build.php
 The build script creates `dist/zipquantum-smart-links.zip` with the required top-level `zipquantum-smart-links/` directory.
 
 Multisite network management and all features listed as post-1.0 backlog are intentionally out of scope.
+
+## License
+
+GPL-2.0-or-later
+
+<p align="center">
+  <a href="https://zq.tn/">Product</a> · <a href="https://zq.tn/docs/">Documentation</a> · <a href="https://zq.tn/developers/ai-agents/">AI agents</a>
+</p>
