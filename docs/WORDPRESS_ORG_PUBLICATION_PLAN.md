@@ -127,7 +127,8 @@ Matrice non bloquante :
 - [x] Calculer et conserver son SHA-256.
 - [x] Soumettre le ZIP depuis le compte `xaere` sur `https://wordpress.org/plugins/developers/add/`.
 - [x] Vérifier le slug proposé et le corriger de `zipquantum-smart-links-qr-codes` vers `zipquantum-smart-links` avant la revue.
-- [ ] Conserver l'e-mail de confirmation et suivre la file de review.
+- [x] E-mail officiel « Successful Plugin Submission » reçu et conservé le 2 septembre 2026.
+- [ ] Suivre la file de review et conserver les prochains e-mails de la Plugin Review Team.
 
 ## Après la soumission
 
