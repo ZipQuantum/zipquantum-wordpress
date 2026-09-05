@@ -20,6 +20,10 @@ Dernière vérification : 2 septembre 2026
 - [x] Parcours réel validé : plugin → inscription Free → consentement OAuth → PKCE/handoff → connexion.
 - [x] Création réelle d'un Smart Link managed et de son QR depuis WordPress 7.1.
 - [x] Compte, tokens, installation, lien et contenu temporaires supprimés après le test.
+- [x] ZIP 1.0.0 soumis à WordPress.org le 2 septembre 2026 depuis le compte propriétaire `xaere`.
+- [x] Scan automatisé WordPress.org : `Pass`.
+- [x] Slug définitif demandé et attribué avant revue : `zipquantum-smart-links`.
+- [x] Statut WordPress.org : `Awaiting Review`.
 
 ## Bloqueurs avant soumission
 
@@ -121,8 +125,8 @@ Matrice non bloquante :
 - [x] Réinstaller le ZIP final sur WordPress 7.1.
 - [x] Refaire Plugin Check sur ce ZIP exact : aucune erreur, avertissements DB intentionnels seulement.
 - [x] Calculer et conserver son SHA-256.
-- [ ] Soumettre le ZIP depuis le compte `xaere` sur `https://wordpress.org/plugins/developers/add/`.
-- [ ] Vérifier le slug proposé avant de confirmer la soumission.
+- [x] Soumettre le ZIP depuis le compte `xaere` sur `https://wordpress.org/plugins/developers/add/`.
+- [x] Vérifier le slug proposé et le corriger de `zipquantum-smart-links-qr-codes` vers `zipquantum-smart-links` avant la revue.
 - [ ] Conserver l'e-mail de confirmation et suivre la file de review.
 
 ## Après la soumission
