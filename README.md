@@ -49,5 +49,6 @@ Multisite network management and all features listed as post-1.0 backlog are int
 GPL-2.0-or-later
 
 <p align="center">
+  <img src="docs/assets/footer-super-z.png" alt="ZipQuantum mascot waving" width="150"><br>
   <a href="https://zq.tn/">Product</a> · <a href="https://zq.tn/docs/">Documentation</a> · <a href="https://zq.tn/developers/ai-agents/">AI agents</a>
 </p>
