@@ -14,11 +14,11 @@ msgstr ""
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: zipquantum-smart-links\n"
 
-#: includes/class-zq-admin.php
+#: includes/class-zipquantum-admin.php
 msgid "Smart Link copied."
 msgstr ""
 
-#: includes/class-zq-admin.php
+#: includes/class-zipquantum-admin.php
 msgid "Copy Smart Link"
 msgstr ""
 
@@ -47,266 +47,266 @@ msgstr ""
 msgid "https://xaere.io/"
 msgstr ""
 
-#: includes/class-zq-activator.php:17
+#: includes/class-zipquantum-activator.php:17
 msgid "ZipQuantum does not support network activation in version 1.0. Activate it separately on each site."
 msgstr ""
 
-#: includes/class-zq-activator.php:18
+#: includes/class-zipquantum-activator.php:18
 msgid "Network activation is not supported"
 msgstr ""
 
-#: includes/class-zq-admin.php:32
-#: includes/class-zq-admin.php:33
-#: includes/class-zq-admin.php:40
-#: includes/class-zq-admin.php:195
+#: includes/class-zipquantum-admin.php:32
+#: includes/class-zipquantum-admin.php:33
+#: includes/class-zipquantum-admin.php:40
+#: includes/class-zipquantum-admin.php:195
 msgid "ZipQuantum"
 msgstr ""
 
-#: includes/class-zq-admin.php:39
-#: includes/class-zq-admin.php:157
+#: includes/class-zipquantum-admin.php:39
+#: includes/class-zipquantum-admin.php:157
 msgid "ZipQuantum tools"
 msgstr ""
 
-#: includes/class-zq-admin.php:91
+#: includes/class-zipquantum-admin.php:91
 msgid "Waiting for ZipQuantum authorization…"
 msgstr ""
 
-#: includes/class-zq-admin.php:92
+#: includes/class-zipquantum-admin.php:92
 msgid "ZipQuantum is connected."
 msgstr ""
 
-#: includes/class-zq-admin.php:93
+#: includes/class-zipquantum-admin.php:93
 msgid "Allow pop-ups, then try again."
 msgstr ""
 
-#: includes/class-zq-admin.php:106
+#: includes/class-zipquantum-admin.php:106
 msgid "Smart Links & QR Codes"
 msgstr ""
 
-#: includes/class-zq-admin.php:107
+#: includes/class-zipquantum-admin.php:107
 msgid "Connect this site, choose its routing domain, then synchronize public content."
 msgstr ""
 
-#: includes/class-zq-admin.php:109
+#: includes/class-zipquantum-admin.php:109
 msgid "This site appears to have been moved or cloned."
 msgstr ""
 
-#: includes/class-zq-admin.php:112
+#: includes/class-zipquantum-admin.php:112
 msgid "1. Account connection"
 msgstr ""
 
-#: includes/class-zq-admin.php:114
+#: includes/class-zipquantum-admin.php:114
 msgid "Connected"
 msgstr ""
 
-#: includes/class-zq-admin.php:116
+#: includes/class-zipquantum-admin.php:116
 msgid "Reconnect ZipQuantum"
 msgstr ""
 
-#: includes/class-zq-admin.php:118
+#: includes/class-zipquantum-admin.php:118
 msgid "Move existing installation"
 msgstr ""
 
-#: includes/class-zq-admin.php:119
+#: includes/class-zipquantum-admin.php:119
 msgid "Create a new installation"
 msgstr ""
 
-#: includes/class-zq-admin.php:121
+#: includes/class-zipquantum-admin.php:121
 msgid "Disconnect"
 msgstr ""
 
-#: includes/class-zq-admin.php:123
+#: includes/class-zipquantum-admin.php:123
 msgid "Connect ZipQuantum"
 msgstr ""
 
-#: includes/class-zq-admin.php:130
+#: includes/class-zipquantum-admin.php:130
 msgid "2. Routing"
 msgstr ""
 
-#: includes/class-zq-admin.php:131
+#: includes/class-zipquantum-admin.php:131
 msgid "Managed zq.tn subdomain"
 msgstr ""
 
-#: includes/class-zq-admin.php:132
+#: includes/class-zipquantum-admin.php:132
 msgid "Verified custom domain"
 msgstr ""
 
-#: includes/class-zq-admin.php:133
+#: includes/class-zipquantum-admin.php:133
 msgid "Coupon destination"
 msgstr ""
 
-#: includes/class-zq-admin.php:136
+#: includes/class-zipquantum-admin.php:136
 msgid "3. Content automation"
 msgstr ""
 
-#: includes/class-zq-admin.php:137
+#: includes/class-zipquantum-admin.php:137
 msgid "Automatically create Smart Links for newly published selected content"
 msgstr ""
 
-#: includes/class-zq-admin.php:144
+#: includes/class-zipquantum-admin.php:144
 msgid "Advanced"
 msgstr ""
 
-#: includes/class-zq-admin.php:145
+#: includes/class-zipquantum-admin.php:145
 msgid "ZipQuantum API base"
 msgstr ""
 
-#: includes/class-zq-admin.php:146
+#: includes/class-zipquantum-admin.php:146
 msgid "Delete local association metadata when uninstalling"
 msgstr ""
 
-#: includes/class-zq-admin.php:158
+#: includes/class-zipquantum-admin.php:158
 msgid "Synchronization queue"
 msgstr ""
 
-#: includes/class-zq-admin.php:164
+#: includes/class-zipquantum-admin.php:164
 msgid "Retry failed"
 msgstr ""
 
-#: includes/class-zq-admin.php:165
+#: includes/class-zipquantum-admin.php:165
 msgid "Resume"
 msgstr ""
 
-#: includes/class-zq-admin.php:167
+#: includes/class-zipquantum-admin.php:167
 msgid "Bulk enqueue"
 msgstr ""
 
-#: includes/class-zq-admin.php:175
+#: includes/class-zipquantum-admin.php:175
 msgid "Add published content to queue"
 msgstr ""
 
-#: includes/class-zq-admin.php:177
+#: includes/class-zipquantum-admin.php:177
 msgid "Progress is durable: refresh this page at any time. Failed rows retain explicit errors and can be retried."
 msgstr ""
 
-#: includes/class-zq-admin.php:185
+#: includes/class-zipquantum-admin.php:185
 msgid "ZipQuantum Smart Link"
 msgstr ""
 
-#: includes/class-zq-admin.php:205
+#: includes/class-zipquantum-admin.php:205
 msgid "Clicks:"
 msgstr ""
 
-#: includes/class-zq-admin.php:207
+#: includes/class-zipquantum-admin.php:207
 msgid "Smart Link QR code"
 msgstr ""
 
-#: includes/class-zq-admin.php:208
+#: includes/class-zipquantum-admin.php:208
 msgid "Download QR"
 msgstr ""
 
-#: includes/class-zq-admin.php:212
+#: includes/class-zipquantum-admin.php:212
 msgid "Attached — read only"
 msgstr ""
 
-#: includes/class-zq-admin.php:216
+#: includes/class-zipquantum-admin.php:216
 msgid "Create Smart Link"
 msgstr ""
 
-#: includes/class-zq-admin.php:216
+#: includes/class-zipquantum-admin.php:216
 msgid "Synchronize"
 msgstr ""
 
-#: includes/class-zq-admin.php:219
+#: includes/class-zipquantum-admin.php:219
 msgid "Attach existing (read-only)"
 msgstr ""
 
-#: includes/class-zq-admin.php:219
+#: includes/class-zipquantum-admin.php:219
 msgid "Smart Link ID"
 msgstr ""
 
-#: includes/class-zq-admin.php:221
+#: includes/class-zipquantum-admin.php:221
 msgid "Attach"
 msgstr ""
 
-#: includes/class-zq-admin.php:236
+#: includes/class-zipquantum-admin.php:236
 msgid "A Smart Link ID is required."
 msgstr ""
 
-#: includes/class-zq-admin.php:253
-#: includes/class-zq-admin.php:293
-#: includes/class-zq-oauth.php:179
-#: includes/class-zq-oauth.php:185
-#: includes/class-zq-queue.php:262
+#: includes/class-zipquantum-admin.php:253
+#: includes/class-zipquantum-admin.php:293
+#: includes/class-zipquantum-oauth.php:179
+#: includes/class-zipquantum-oauth.php:185
+#: includes/class-zipquantum-queue.php:262
 msgid "Permission denied."
 msgstr ""
 
-#: includes/class-zq-admin.php:311
+#: includes/class-zipquantum-admin.php:311
 msgid "Product"
 msgstr ""
 
-#: includes/class-zq-admin.php:312
+#: includes/class-zipquantum-admin.php:312
 msgid "Product category"
 msgstr ""
 
-#: includes/class-zq-admin.php:313
+#: includes/class-zipquantum-admin.php:313
 msgid "Coupon"
 msgstr ""
 
-#: includes/class-zq-api-client.php:40
+#: includes/class-zipquantum-api-client.php:40
 msgid "Reconnect ZipQuantum to continue."
 msgstr ""
 
-#: includes/class-zq-oauth.php:70
+#: includes/class-zipquantum-oauth.php:70
 msgid "ZipQuantum returned an invalid authorization URL."
 msgstr ""
 
-#: includes/class-zq-oauth.php:90
+#: includes/class-zipquantum-oauth.php:90
 msgid "Start the ZipQuantum connection again."
 msgstr ""
 
-#: includes/class-zq-oauth.php:95
+#: includes/class-zipquantum-oauth.php:95
 msgid "The connection request expired."
 msgstr ""
 
-#: includes/class-zq-oauth.php:110
+#: includes/class-zipquantum-oauth.php:110
 msgid "OAuth state verification failed."
 msgstr ""
 
-#: includes/class-zq-plugin.php:57
+#: includes/class-zipquantum-plugin.php:57
 msgid "Settings"
 msgstr ""
 
-#: includes/class-zq-queue.php:40
+#: includes/class-zipquantum-queue.php:40
 msgid "Every minute (ZipQuantum)"
 msgstr ""
 
-#: includes/class-zq-sync.php:73
+#: includes/class-zipquantum-sync.php:73
 msgid "Reconnect ZipQuantum to synchronize content."
 msgstr ""
 
-#: includes/class-zq-sync.php:115
+#: includes/class-zipquantum-sync.php:115
 msgid "Choose a Smart Link before attaching it."
 msgstr ""
 
-#: includes/class-zq-sync.php:153
+#: includes/class-zipquantum-sync.php:153
 msgid "Product category not found."
 msgstr ""
 
-#: includes/class-zq-sync.php:177
+#: includes/class-zipquantum-sync.php:177
 msgid "WordPress content not found."
 msgstr ""
 
-#: includes/class-zq-woocommerce.php:46
+#: includes/class-zipquantum-woocommerce.php:46
 msgid "WooCommerce is required to apply this coupon."
 msgstr ""
 
-#: includes/class-zq-woocommerce.php:56
+#: includes/class-zipquantum-woocommerce.php:56
 msgid "The coupon destination must be a local path."
 msgstr ""
 
-#: includes/class-zq-woocommerce.php:62
+#: includes/class-zipquantum-woocommerce.php:62
 msgid "This coupon does not exist."
 msgstr ""
 
-#: includes/class-zq-woocommerce.php:69
+#: includes/class-zipquantum-woocommerce.php:69
 msgid "The WooCommerce cart is unavailable."
 msgstr ""
 
-#: includes/class-zq-woocommerce.php:75
+#: includes/class-zipquantum-woocommerce.php:75
 msgid "This coupon cannot be applied to the current cart."
 msgstr ""
 
-#: includes/class-zq-woocommerce.php:85
+#: includes/class-zipquantum-woocommerce.php:85
 msgid "ZipQuantum Smart Links"
 msgstr ""

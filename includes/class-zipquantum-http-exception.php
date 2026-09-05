@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-class ZQ_HTTP_Exception extends RuntimeException {
+class ZIPQUANTUM_HTTP_Exception extends RuntimeException {
 
 	/** @var int */
 	private $status;

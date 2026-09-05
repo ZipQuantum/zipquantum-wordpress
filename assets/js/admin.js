@@ -2,23 +2,23 @@
 	'use strict';
 
 	function message( text, isError ) {
-		$( '.zq-oauth-message' )
+		$( '.zipquantum-oauth-message' )
 			.text( text || '' )
-			.toggleClass( 'zq-error', Boolean( isError ) );
+			.toggleClass( 'zipquantum-error', Boolean( isError ) );
 	}
 
 	function poll( popup, interval ) {
 		window.setTimeout( function () {
-			$.post( ZQSmartLinks.ajaxUrl, {
-				action: 'zq_oauth_poll',
-				nonce: ZQSmartLinks.nonce
+			$.post( ZIPQUANTUMSmartLinks.ajaxUrl, {
+				action: 'zipquantum_oauth_poll',
+				nonce: ZIPQUANTUMSmartLinks.nonce
 			} ).done( function ( response ) {
 				if ( ! response.success ) {
 					message( response.data && response.data.message ? response.data.message : 'ZipQuantum connection failed.', true );
 					return;
 				}
 				if ( response.data.status === 'connected' ) {
-					message( ZQSmartLinks.i18n.connected, false );
+					message( ZIPQUANTUMSmartLinks.i18n.connected, false );
 					if ( popup && ! popup.closed ) {
 						popup.close();
 					}
@@ -33,19 +33,19 @@
 		}, interval * 1000 );
 	}
 
-	$( document ).on( 'click', '.zq-oauth-start', function ( event ) {
+	$( document ).on( 'click', '.zipquantum-oauth-start', function ( event ) {
 		event.preventDefault();
 		var button = $( this );
 		var popup = window.open( 'about:blank', 'zipquantum_oauth', 'width=760,height=760,resizable=yes,scrollbars=yes' );
 		if ( ! popup ) {
-			message( ZQSmartLinks.i18n.popup, true );
+			message( ZIPQUANTUMSmartLinks.i18n.popup, true );
 			return;
 		}
 		button.prop( 'disabled', true );
-		message( ZQSmartLinks.i18n.connecting, false );
-		$.post( ZQSmartLinks.ajaxUrl, {
-			action: 'zq_oauth_start',
-			nonce: ZQSmartLinks.nonce,
+		message( ZIPQUANTUMSmartLinks.i18n.connecting, false );
+		$.post( ZIPQUANTUMSmartLinks.ajaxUrl, {
+			action: 'zipquantum_oauth_start',
+			nonce: ZIPQUANTUMSmartLinks.nonce,
 			intent: button.data( 'intent' ) || 'connect'
 		} ).done( function ( response ) {
 			button.prop( 'disabled', false );
@@ -64,15 +64,15 @@
 		} );
 	} );
 
-	$( document ).on( 'click', '.zq-copy-link', function () {
+	$( document ).on( 'click', '.zipquantum-copy-link', function () {
 		var button = this;
-		var value = $( button ).data( 'zq-copy' );
+		var value = $( button ).data( 'zipquantum-copy' );
 		if ( ! value ) {
 			return;
 		}
 		var copied = function () {
 			var original = button.textContent;
-			button.textContent = ZQSmartLinks.i18n.copied;
+			button.textContent = ZIPQUANTUMSmartLinks.i18n.copied;
 			window.setTimeout( function () { button.textContent = original; }, 1500 );
 		};
 		if ( navigator.clipboard && navigator.clipboard.writeText ) {
@@ -87,18 +87,18 @@
 		input.remove();
 	} );
 
-	$( document ).on( 'click', '.zq-object-action', function () {
+	$( document ).on( 'click', '.zipquantum-object-action', function () {
 		var button = $( this );
-		var action = button.data( 'zq-action' );
+		var action = button.data( 'zipquantum-action' );
 		var fields = {
 			action: action,
-			object_type: button.data( 'zq-object-type' ),
-			object_id: button.data( 'zq-object-id' ),
-			_wpnonce: button.data( 'zq-nonce' )
+			object_type: button.data( 'zipquantum-object-type' ),
+			object_id: button.data( 'zipquantum-object-id' ),
+			_wpnonce: button.data( 'zipquantum-nonce' )
 		};
 
-		if ( action === 'zq_object_attach' ) {
-			var linkIdInput = button.closest( 'details' ).find( '.zq-attach-link-id' )[ 0 ];
+		if ( action === 'zipquantum_object_attach' ) {
+			var linkIdInput = button.closest( 'details' ).find( '.zipquantum-attach-link-id' )[ 0 ];
 			if ( ! linkIdInput || ! linkIdInput.reportValidity() ) {
 				return;
 			}
@@ -107,7 +107,7 @@
 
 		var form = $( '<form>', {
 			method: 'post',
-			action: ZQSmartLinks.adminPostUrl
+			action: ZIPQUANTUMSmartLinks.adminPostUrl
 		} ).appendTo( document.body );
 
 		$.each( fields, function ( name, value ) {

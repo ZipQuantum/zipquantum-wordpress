@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-final class ZQ_WooCommerce {
+final class ZIPQUANTUM_WooCommerce {
 
 	/** @var self|null */
 	private static $instance;
@@ -30,16 +30,16 @@ final class ZQ_WooCommerce {
 	}
 
 	public static function add_coupon_rewrite_rule() {
-		add_rewrite_rule( '^zq-coupon/([^/]+)/?$', 'index.php?zq_coupon=$matches[1]', 'top' );
+		add_rewrite_rule( '^zipquantum-coupon/([^/]+)/?$', 'index.php?zipquantum_coupon=$matches[1]', 'top' );
 	}
 
 	public function query_vars( $vars ) {
-		$vars[] = 'zq_coupon';
+		$vars[] = 'zipquantum_coupon';
 		return $vars;
 	}
 
 	public function coupon_redirect() {
-		$raw_code = get_query_var( 'zq_coupon' );
+		$raw_code = get_query_var( 'zipquantum_coupon' );
 		if ( ! $raw_code ) {
 			return;
 		}
@@ -47,7 +47,7 @@ final class ZQ_WooCommerce {
 			wp_die( esc_html__( 'WooCommerce is required to apply this coupon.', 'zipquantum-smart-links' ), '', array( 'response' => 404 ) );
 		}
 
-		$settings = ZQ_Options::settings();
+		$settings = ZIPQUANTUM_Options::settings();
 		// A nonce is intentionally not required: coupon links are public and shareable.
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$encoded_to = isset( $_GET['to'] ) ? sanitize_text_field( wp_unslash( $_GET['to'] ) ) : '';

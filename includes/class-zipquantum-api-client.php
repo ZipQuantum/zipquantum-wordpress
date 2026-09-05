@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-final class ZQ_API_Client {
+final class ZIPQUANTUM_API_Client {
 
 	const CLIENT_ID = 'zipquantum-smart-links';
 	const RESOURCE  = 'https://a.zq.tn/api';
@@ -35,10 +35,10 @@ final class ZQ_API_Client {
 	 * @return array
 	 */
 	public function request( $method, $path, $body = array(), $headers = array() ) {
-		$credentials = ZQ_Options::get_secret( ZQ_Options::CREDENTIALS, array() );
+		$credentials = ZIPQUANTUM_Options::get_secret( ZIPQUANTUM_Options::CREDENTIALS, array() );
 		if ( empty( $credentials['access_token'] ) ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Internal exception; escaped only at the eventual HTML output boundary.
-			throw new ZQ_HTTP_Exception( __( 'Reconnect ZipQuantum to continue.', 'zipquantum-smart-links' ), 401, 'reconnect_required' );
+			throw new ZIPQUANTUM_HTTP_Exception( __( 'Reconnect ZipQuantum to continue.', 'zipquantum-smart-links' ), 401, 'reconnect_required' );
 		}
 
 		$headers['Authorization'] = 'Bearer ' . $credentials['access_token'];
@@ -46,7 +46,7 @@ final class ZQ_API_Client {
 
 		try {
 			return $this->request_raw( $method, $path, $body, $headers );
-		} catch ( ZQ_HTTP_Exception $error ) {
+		} catch ( ZIPQUANTUM_HTTP_Exception $error ) {
 			if ( 401 !== $error->status() || empty( $credentials['refresh_token'] ) ) {
 				throw $error;
 			}
@@ -74,7 +74,7 @@ final class ZQ_API_Client {
 				'refresh_token' => $refresh_token,
 			)
 		);
-		ZQ_Options::set_secret( ZQ_Options::CREDENTIALS, $tokens );
+		ZIPQUANTUM_Options::set_secret( ZIPQUANTUM_Options::CREDENTIALS, $tokens );
 
 		return $tokens;
 	}
@@ -89,7 +89,7 @@ final class ZQ_API_Client {
 	 * @return array
 	 */
 	private function request_raw( $method, $path, $body, $headers ) {
-		$settings = ZQ_Options::settings();
+		$settings = ZIPQUANTUM_Options::settings();
 		$base     = untrailingslashit( esc_url_raw( $settings['api_base'] ) );
 		$url      = $base . '/' . ltrim( $path, '/' );
 		$args     = array(
@@ -100,7 +100,7 @@ final class ZQ_API_Client {
 				array(
 					'Accept'       => 'application/json',
 					'Content-Type' => 'application/json',
-					'User-Agent'   => 'ZipQuantum-WordPress/' . ZQ_SMART_LINKS_VERSION . '; ' . home_url( '/' ),
+					'User-Agent'   => 'ZipQuantum-WordPress/' . ZIPQUANTUM_SMART_LINKS_VERSION . '; ' . home_url( '/' ),
 				),
 				$headers
 			),
@@ -113,7 +113,7 @@ final class ZQ_API_Client {
 		$response = wp_remote_request( $url, $args );
 		if ( is_wp_error( $response ) ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Internal exception; escaped only at the eventual HTML output boundary.
-			throw new ZQ_HTTP_Exception( $response->get_error_message(), 0, 'network_error' );
+			throw new ZIPQUANTUM_HTTP_Exception( $response->get_error_message(), 0, 'network_error' );
 		}
 
 		$status  = (int) wp_remote_retrieve_response_code( $response );
@@ -133,7 +133,7 @@ final class ZQ_API_Client {
 				$response_headers = (array) $response_headers;
 			}
 			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Internal exception values are normalized and escaped only at the eventual HTML output boundary.
-			throw new ZQ_HTTP_Exception( sanitize_text_field( $message ), $status, sanitize_key( $code ), $response_headers );
+			throw new ZIPQUANTUM_HTTP_Exception( sanitize_text_field( $message ), $status, sanitize_key( $code ), $response_headers );
 		}
 
 		return $data;

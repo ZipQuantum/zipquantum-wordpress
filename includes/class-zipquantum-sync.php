@@ -7,12 +7,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-final class ZQ_Sync {
+final class ZIPQUANTUM_Sync {
 
-	/** @var ZQ_API_Client */
+	/** @var ZIPQUANTUM_API_Client */
 	private $api;
 
-	public function __construct( ZQ_API_Client $api ) {
+	public function __construct( ZIPQUANTUM_API_Client $api ) {
 		$this->api = $api;
 	}
 
@@ -42,12 +42,12 @@ final class ZQ_Sync {
 			return;
 		}
 
-		ZQ_Queue::enqueue( 'sync', $object_type, $post_id, $this->build_payload( $object_type, $post_id ) );
+		ZIPQUANTUM_Queue::enqueue( 'sync', $object_type, $post_id, $this->build_payload( $object_type, $post_id ) );
 	}
 
 	public function on_save_product_category( $term_id ) {
 		if ( $this->should_enqueue( 'product_cat', $term_id ) ) {
-			ZQ_Queue::enqueue( 'sync', 'product_cat', $term_id, $this->build_payload( 'product_cat', $term_id ) );
+			ZIPQUANTUM_Queue::enqueue( 'sync', 'product_cat', $term_id, $this->build_payload( 'product_cat', $term_id ) );
 		}
 	}
 
@@ -55,14 +55,14 @@ final class ZQ_Sync {
 		$post = get_post( $post_id );
 		if ( $post ) {
 			$object_type = $this->object_type_for_post( $post );
-			ZQ_Associations::delete( $object_type, $post_id );
-			ZQ_Queue::cancel_object( $object_type, $post_id );
+			ZIPQUANTUM_Associations::delete( $object_type, $post_id );
+			ZIPQUANTUM_Queue::cancel_object( $object_type, $post_id );
 		}
 	}
 
 	public function on_delete_product_category( $term_id ) {
-		ZQ_Associations::delete( 'product_cat', $term_id );
-		ZQ_Queue::cancel_object( 'product_cat', $term_id );
+		ZIPQUANTUM_Associations::delete( 'product_cat', $term_id );
+		ZIPQUANTUM_Queue::cancel_object( 'product_cat', $term_id );
 	}
 
 	public function sync( $object_type, $object_id, $payload = array() ) {
@@ -70,10 +70,10 @@ final class ZQ_Sync {
 			$payload = $this->build_payload( $object_type, $object_id );
 		}
 
-		$credentials = ZQ_Options::get_secret( ZQ_Options::CREDENTIALS, array() );
+		$credentials = ZIPQUANTUM_Options::get_secret( ZIPQUANTUM_Options::CREDENTIALS, array() );
 		if ( empty( $credentials['installation_id'] ) ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Internal exception; escaped only at the eventual HTML output boundary.
-			throw new ZQ_HTTP_Exception( __( 'Reconnect ZipQuantum to synchronize content.', 'zipquantum-smart-links' ), 401, 'reconnect_required' );
+			throw new ZIPQUANTUM_HTTP_Exception( __( 'Reconnect ZipQuantum to synchronize content.', 'zipquantum-smart-links' ), 401, 'reconnect_required' );
 		}
 
 		$hash   = self::payload_hash( $payload );
@@ -97,13 +97,13 @@ final class ZQ_Sync {
 			'local_status'    => 'active',
 			'payload_hash'    => $hash,
 		);
-		ZQ_Associations::set( $object_type, $object_id, $local );
+		ZIPQUANTUM_Associations::set( $object_type, $object_id, $local );
 
 		return $result;
 	}
 
 	public function build_payload( $object_type, $object_id, $management_mode = '' ) {
-		$association = ZQ_Associations::get( $object_type, $object_id );
+		$association = ZIPQUANTUM_Associations::get( $object_type, $object_id );
 		$mode        = $management_mode ? $management_mode : ( isset( $association['management_mode'] ) ? $association['management_mode'] : 'managed' );
 		$payload     = array(
 			'provider'        => 'wordpress',
@@ -123,7 +123,7 @@ final class ZQ_Sync {
 		}
 
 		$content                   = $this->content_data( $object_type, $object_id );
-		$settings                  = ZQ_Options::settings();
+		$settings                  = ZIPQUANTUM_Options::settings();
 		$payload['managed_fields'] = array(
 			'destination_url',
 			'preview_title',
@@ -185,9 +185,9 @@ final class ZQ_Sync {
 		}
 		$url = get_permalink( $post );
 		if ( 'coupon' === $object_type ) {
-			$settings = ZQ_Options::settings();
+			$settings = ZIPQUANTUM_Options::settings();
 			$to       = isset( $settings['coupon_destination'] ) ? $settings['coupon_destination'] : '/checkout/';
-			$url      = home_url( '/zq-coupon/' . rawurlencode( $post->post_title ) . '/' ) . '?to=' . rawurlencode( $to );
+			$url      = home_url( '/zipquantum-coupon/' . rawurlencode( $post->post_title ) . '/' ) . '?to=' . rawurlencode( $to );
 		}
 
 		return array(
@@ -200,15 +200,15 @@ final class ZQ_Sync {
 	}
 
 	private function should_enqueue( $object_type, $object_id ) {
-		if ( ! ZQ_Options::get_secret( ZQ_Options::CREDENTIALS, array() ) ) {
+		if ( ! ZIPQUANTUM_Options::get_secret( ZIPQUANTUM_Options::CREDENTIALS, array() ) ) {
 			return false;
 		}
-		$association = ZQ_Associations::get( $object_type, $object_id );
+		$association = ZIPQUANTUM_Associations::get( $object_type, $object_id );
 		if ( ! empty( $association ) && 'quarantined' !== ( $association['local_status'] ?? '' ) ) {
 			return 'managed' === ( $association['management_mode'] ?? 'managed' );
 		}
 
-		$settings = ZQ_Options::settings();
+		$settings = ZIPQUANTUM_Options::settings();
 		return ! empty( $settings['auto_create'] ) && in_array( $object_type, (array) $settings['object_types'], true );
 	}
 

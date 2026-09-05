@@ -7,9 +7,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-final class ZQ_Associations {
+final class ZIPQUANTUM_Associations {
 
-	const META_KEY = '_zq_smart_link_association';
+	const META_KEY = '_zipquantum_smart_link_association';
 
 	public static function get( $object_type, $object_id ) {
 		if ( 'product_cat' === $object_type ) {

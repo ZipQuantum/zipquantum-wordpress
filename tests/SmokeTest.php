@@ -16,4 +16,45 @@ final class SmokeTest extends TestCase {
 		$this->assertStringContainsString( 'visitor fingerprints', $contents );
 		$this->assertStringContainsString( 'https://zq.tn/privacy-policy/', $contents );
 	}
+
+	public function test_wordpress_identifiers_use_the_unique_long_prefix(): void {
+		$root      = dirname( __DIR__ );
+		$patterns   = array(
+			'/ZQ_/',
+			'/zq_/',
+			'/zq-/',
+			'/ZQSmartLinks/',
+			'/ZIPQ(?!UANTUM)/',
+			'/zipq(?!uantum)/',
+		);
+		$violations = array();
+		$paths      = array(
+			$root . '/zipquantum-smart-links.php',
+			$root . '/uninstall.php',
+			$root . '/includes',
+			$root . '/assets',
+		);
+
+		foreach ( $paths as $path ) {
+			$files = is_dir( $path )
+				? new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $path, FilesystemIterator::SKIP_DOTS ) )
+				: array( new SplFileInfo( $path ) );
+
+			foreach ( $files as $file ) {
+				if ( ! $file->isFile() || ! preg_match( '/\.(php|js|css)$/', $file->getPathname() ) ) {
+					continue;
+				}
+
+				$contents = file_get_contents( $file->getPathname() );
+				foreach ( $patterns as $pattern ) {
+					if ( preg_match( $pattern, $contents ) ) {
+						$violations[] = str_replace( $root . DIRECTORY_SEPARATOR, '', $file->getPathname() ) . ' matches ' . $pattern;
+					}
+				}
+			}
+		}
+
+		$this->assertSame( array(), $violations, implode( PHP_EOL, $violations ) );
+		$this->assertStringContainsString( "final class ZIPQUANTUM_Options", file_get_contents( $root . '/includes/class-zipquantum-options.php' ) );
+	}
 }

@@ -7,15 +7,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-final class ZQ_Queue {
+final class ZIPQUANTUM_Queue {
 
-	const CRON_HOOK = 'zq_smart_links_process_queue';
-	const LOCK_KEY  = 'zq_smart_links_queue_lock';
+	const CRON_HOOK = 'zipquantum_smart_links_process_queue';
+	const LOCK_KEY  = 'zipquantum_smart_links_queue_lock';
 
-	/** @var ZQ_Sync */
+	/** @var ZIPQUANTUM_Sync */
 	private $sync;
 
-	public function __construct( ZQ_Sync $sync ) {
+	public function __construct( ZIPQUANTUM_Sync $sync ) {
 		$this->sync = $sync;
 	}
 
@@ -24,18 +24,18 @@ final class ZQ_Queue {
 		add_action( 'init', array( $this, 'ensure_schedule' ), 20 );
 		add_action( self::CRON_HOOK, array( $this, 'process' ) );
 		add_action( 'admin_init', array( $this, 'opportunistic_process' ), 99 );
-		add_action( 'admin_post_zq_queue_retry', array( $this, 'retry_failed' ) );
-		add_action( 'admin_post_zq_queue_resume', array( $this, 'resume' ) );
+		add_action( 'admin_post_zipquantum_queue_retry', array( $this, 'retry_failed' ) );
+		add_action( 'admin_post_zipquantum_queue_resume', array( $this, 'resume' ) );
 	}
 
 	public function ensure_schedule() {
 		if ( ! wp_next_scheduled( self::CRON_HOOK ) ) {
-			wp_schedule_event( time() + MINUTE_IN_SECONDS, 'zq_every_minute', self::CRON_HOOK );
+			wp_schedule_event( time() + MINUTE_IN_SECONDS, 'zipquantum_every_minute', self::CRON_HOOK );
 		}
 	}
 
 	public function cron_schedules( $schedules ) {
-		$schedules['zq_every_minute'] = array(
+		$schedules['zipquantum_every_minute'] = array(
 			'interval' => MINUTE_IN_SECONDS,
 			'display'  => __( 'Every minute (ZipQuantum)', 'zipquantum-smart-links' ),
 		);
@@ -45,7 +45,7 @@ final class ZQ_Queue {
 	public static function enqueue( $operation, $object_type, $object_id, $payload ) {
 		global $wpdb;
 		$table = self::table();
-		$hash  = ZQ_Sync::payload_hash( $payload );
+		$hash  = ZIPQUANTUM_Sync::payload_hash( $payload );
 		$now   = current_time( 'mysql', true );
 		$wpdb->query(
 			$wpdb->prepare(
@@ -72,7 +72,7 @@ final class ZQ_Queue {
 	}
 
 	public function process( $limit = 5 ) {
-		if ( get_transient( self::LOCK_KEY ) || ! ZQ_Options::get_secret( ZQ_Options::CREDENTIALS, array() ) ) {
+		if ( get_transient( self::LOCK_KEY ) || ! ZIPQUANTUM_Options::get_secret( ZIPQUANTUM_Options::CREDENTIALS, array() ) ) {
 			return;
 		}
 		set_transient( self::LOCK_KEY, 1, 30 );
@@ -130,14 +130,14 @@ final class ZQ_Queue {
 				),
 				array( 'id' => $row['id'] )
 			);
-		} catch ( ZQ_HTTP_Exception $error ) {
+		} catch ( ZIPQUANTUM_HTTP_Exception $error ) {
 			$this->handle_error( $row, $error );
 		} catch ( Throwable $error ) {
 			$this->schedule_retry( $row, $error->getMessage() );
 		}
 	}
 
-	private function handle_error( $row, ZQ_HTTP_Exception $error ) {
+	private function handle_error( $row, ZIPQUANTUM_HTTP_Exception $error ) {
 		global $wpdb;
 		$table = self::table();
 		if ( 409 === $error->status() && 'installation_identity_mismatch' === $error->api_code() ) {
@@ -147,8 +147,8 @@ final class ZQ_Queue {
 					$table
 				)
 			);
-			ZQ_Options::set(
-				ZQ_Options::STATE,
+			ZIPQUANTUM_Options::set(
+				ZIPQUANTUM_Options::STATE,
 				array(
 					'identity_mismatch' => true,
 					'detected_at'       => gmdate( 'c' ),
@@ -220,7 +220,7 @@ final class ZQ_Queue {
 	}
 
 	public function retry_failed() {
-		$this->guard( 'zq_queue_retry' );
+		$this->guard( 'zipquantum_queue_retry' );
 		global $wpdb;
 		$wpdb->query(
 			$wpdb->prepare(
@@ -259,8 +259,8 @@ final class ZQ_Queue {
 	}
 
 	public function resume() {
-		$this->guard( 'zq_queue_resume' );
-		$state = ZQ_Options::get( ZQ_Options::STATE, array() );
+		$this->guard( 'zipquantum_queue_resume' );
+		$state = ZIPQUANTUM_Options::get( ZIPQUANTUM_Options::STATE, array() );
 		if ( empty( $state['identity_mismatch'] ) ) {
 			global $wpdb;
 			$wpdb->query(
@@ -300,7 +300,7 @@ final class ZQ_Queue {
 
 	public static function table() {
 		global $wpdb;
-		return $wpdb->prefix . 'zq_queue';
+		return $wpdb->prefix . 'zipquantum_queue';
 	}
 
 	private static function retry_after_seconds( $value ) {

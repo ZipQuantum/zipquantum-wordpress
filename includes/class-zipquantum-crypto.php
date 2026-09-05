@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-final class ZQ_Crypto {
+final class ZIPQUANTUM_Crypto {
 
 	/**
 	 * Encrypt a value with keys derived from the WordPress salts.

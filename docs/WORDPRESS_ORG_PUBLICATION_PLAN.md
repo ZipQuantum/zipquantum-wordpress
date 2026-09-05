@@ -1,6 +1,6 @@
 # Plan de publication WordPress.org — ZipQuantum Smart Links 1.0.0
 
-Dernière vérification : 2 septembre 2026
+Dernière vérification : 5 septembre 2026
 
 ## État actuel
 
@@ -10,8 +10,8 @@ Dernière vérification : 2 septembre 2026
 - [x] `readme.txt`, disclosure du service externe, Terms et Privacy préparés.
 - [x] Icônes, bannières et captures WordPress.org préparées.
 - [x] ZIP de production propre généré : `dist/zipquantum-smart-links.zip`.
-- [x] ZIP final : 37 207 octets, SHA-256 `AFC16CD203B64D0685FED38CEC72453DCDC0150533D30CD215EEB9B226BB6281`.
-- [x] PHPUnit plugin : 2 tests, 6 assertions.
+- [x] ZIP de correction review final : 37 611 octets, SHA-256 `BD358F4EDD2555005D242781BAB50E4465EAE2DACA04864624DBE617FBA08DB9`.
+- [x] PHPUnit plugin : 3 tests, 8 assertions, dont un test anti-régression des préfixes.
 - [x] WPCS/PHPCS : 14 fichiers validés.
 - [x] Matrice CI préparée pour PHP 7.4, 8.0, 8.2 et 8.3.
 - [x] Suite Laravel complète : 244 tests, 1 470 assertions, avec une dépréciation non bloquante.
@@ -23,7 +23,11 @@ Dernière vérification : 2 septembre 2026
 - [x] ZIP 1.0.0 soumis à WordPress.org le 2 septembre 2026 depuis le compte propriétaire `xaere`.
 - [x] Scan automatisé WordPress.org : `Pass`.
 - [x] Slug définitif demandé et attribué avant revue : `zipquantum-smart-links`.
-- [x] Statut WordPress.org : `Awaiting Review`.
+- [x] Statut WordPress.org : `Review in Progress` ; première réponse reçue le 5 septembre 2026.
+- [x] Remarque technique corrigée : préfixe global `ZIPQUANTUM_` / `zipquantum_` appliqué au code, aux hooks et aux données stockées.
+- [x] Convention de marque figée : uniquement `ZQ` ou `ZIPQUANTUM`, jamais `ZIPQ`.
+- [x] Propriété officielle Xaere/ZipQuantum établie avec l'adresse de compte confirmée `integrations@zq.tn`.
+- [x] Charger le ZIP corrigé dans la soumission puis répondre dans le même fil de review.
 
 ## Bloqueurs avant soumission
 
@@ -114,20 +118,21 @@ Matrice non bloquante :
 
 ### 8. Finaliser le compte propriétaire Xaere
 
-- [ ] Remplacer l'adresse générique actuelle par une adresse officielle `@xaere.io` régulièrement surveillée.
-- [ ] Ajouter `plugins@wordpress.org` à la liste des expéditeurs autorisés.
-- [ ] Confirmer que Xaere reste owner du plugin.
+- [x] Remplacer `zipquantum@gmail.com` par l'adresse officielle et surveillée `integrations@zq.tn` afin d'établir la propriété de ZipQuantum.
+- [x] Vérifier la réception des messages de `plugins@wordpress.org` via le transfert vers la boîte surveillée.
+- [x] Confirmer que Xaere reste owner du plugin.
 - [ ] Préparer les comptes humains séparés qui deviendront committers/support representatives après approbation.
 
 ## Soumission WordPress.org
 
 - [x] Reconstruire le ZIP depuis une source Git propre.
 - [x] Réinstaller le ZIP final sur WordPress 7.1.
-- [x] Refaire Plugin Check sur ce ZIP exact : aucune erreur, avertissements DB intentionnels seulement.
-- [x] Calculer et conserver son SHA-256.
+- [x] Refaire Plugin Check sur le ZIP corrigé exact après la remarque de review : aucun avertissement de préfixage ; avertissements DB intentionnels seulement.
+- [x] Calculer et conserver son SHA-256 : `BD358F4EDD2555005D242781BAB50E4465EAE2DACA04864624DBE617FBA08DB9`.
 - [x] Soumettre le ZIP depuis le compte `xaere` sur `https://wordpress.org/plugins/developers/add/`.
 - [x] Vérifier le slug proposé et le corriger de `zipquantum-smart-links-qr-codes` vers `zipquantum-smart-links` avant la revue.
 - [x] E-mail officiel « Successful Plugin Submission » reçu et conservé le 2 septembre 2026.
+- [x] Répondre au premier cycle de review le 5 septembre 2026.
 - [ ] Suivre la file de review et conserver les prochains e-mails de la Plugin Review Team.
 
 ## Après la soumission

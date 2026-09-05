@@ -8,7 +8,7 @@
     },
     {
       "step": "runPHP",
-      "code": "<?php require_once '/wordpress/wp-load.php'; require_once ABSPATH . 'wp-admin/includes/plugin.php'; if (!is_plugin_active('zipquantum-smart-links/zipquantum-smart-links.php')) { throw new Exception('ZipQuantum plugin is not active'); } if (!class_exists('ZQ_Plugin')) { throw new Exception('ZQ_Plugin was not loaded'); } echo 'ZIPQUANTUM_ACTIVATION_OK WordPress=' . get_bloginfo('version') . ' PHP=' . PHP_VERSION;"
+      "code": "<?php require_once '/wordpress/wp-load.php'; require_once ABSPATH . 'wp-admin/includes/plugin.php'; if (!is_plugin_active('zipquantum-smart-links/zipquantum-smart-links.php')) { throw new Exception('ZipQuantum plugin is not active'); } if (!class_exists('ZIPQUANTUM_Plugin')) { throw new Exception('ZIPQUANTUM_Plugin was not loaded'); } echo 'ZIPQUANTUM_ACTIVATION_OK WordPress=' . get_bloginfo('version') . ' PHP=' . PHP_VERSION;"
     }
   ]
 }

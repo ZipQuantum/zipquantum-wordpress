@@ -7,14 +7,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-final class ZQ_Options {
+final class ZIPQUANTUM_Options {
 
-	const SETTINGS      = 'zq_smart_links_settings';
-	const INSTALLATION  = 'zq_smart_links_installation';
-	const CREDENTIALS   = 'zq_smart_links_credentials';
-	const OAUTH_PENDING = 'zq_smart_links_oauth_pending';
-	const CONTEXT       = 'zq_smart_links_context';
-	const STATE         = 'zq_smart_links_state';
+	const SETTINGS      = 'zipquantum_smart_links_settings';
+	const INSTALLATION  = 'zipquantum_smart_links_installation';
+	const CREDENTIALS   = 'zipquantum_smart_links_credentials';
+	const OAUTH_PENDING = 'zipquantum_smart_links_oauth_pending';
+	const CONTEXT       = 'zipquantum_smart_links_context';
+	const STATE         = 'zipquantum_smart_links_state';
 
 	/**
 	 * Get plugin settings.
@@ -80,7 +80,7 @@ final class ZQ_Options {
 	 * @return bool
 	 */
 	public static function set_secret( $name, $value ) {
-		return self::set( $name, ZQ_Crypto::encrypt( $value ) );
+		return self::set( $name, ZIPQUANTUM_Crypto::encrypt( $value ) );
 	}
 
 	/**
@@ -96,7 +96,7 @@ final class ZQ_Options {
 			return $default;
 		}
 
-		$decrypted = ZQ_Crypto::decrypt( $value );
+		$decrypted = ZIPQUANTUM_Crypto::decrypt( $value );
 		return null === $decrypted ? $default : $decrypted;
 	}
 
