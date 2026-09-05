@@ -10,7 +10,7 @@ Dernière vérification : 2 septembre 2026
 - [x] `readme.txt`, disclosure du service externe, Terms et Privacy préparés.
 - [x] Icônes, bannières et captures WordPress.org préparées.
 - [x] ZIP de production propre généré : `dist/zipquantum-smart-links.zip`.
-- [x] Taille du ZIP largement inférieure à 10 Mo.
+- [x] ZIP final : 37 207 octets, SHA-256 `AFC16CD203B64D0685FED38CEC72453DCDC0150533D30CD215EEB9B226BB6281`.
 - [x] PHPUnit plugin : 2 tests, 6 assertions.
 - [x] WPCS/PHPCS : 14 fichiers validés.
 - [x] Matrice CI préparée pour PHP 7.4, 8.0, 8.2 et 8.3.
@@ -74,10 +74,10 @@ Dernière vérification : 2 septembre 2026
 ### 5. Initialiser Git et la CI du plugin
 
 - [x] Vérifier l'arbre de travail sans supprimer les travaux existants.
-- [ ] Créer le premier commit du dépôt `zipquantum-wordpress`.
-- [ ] Créer le dépôt Git public officiel sous l'organisation `ZipQuantum` (Xaere reste owner WordPress.org).
-- [ ] Ajouter le remote et pousser la branche principale.
-- [ ] Faire passer la CI complète.
+- [x] Créer le premier commit du dépôt `zipquantum-wordpress`.
+- [x] Créer le dépôt Git public officiel sous l'organisation `ZipQuantum` (Xaere reste owner WordPress.org).
+- [x] Ajouter le remote et pousser la branche principale.
+- [x] Faire passer la CI complète.
 
 Matrice bloquante :
 
@@ -117,10 +117,10 @@ Matrice non bloquante :
 
 ## Soumission WordPress.org
 
-- [ ] Reconstruire le ZIP depuis une source Git propre.
-- [ ] Réinstaller le ZIP final sur un WordPress vierge.
-- [ ] Refaire Plugin Check et le contrôle du `readme.txt` sur ce ZIP exact.
-- [ ] Calculer et conserver son SHA-256.
+- [x] Reconstruire le ZIP depuis une source Git propre.
+- [x] Réinstaller le ZIP final sur WordPress 7.1.
+- [x] Refaire Plugin Check sur ce ZIP exact : aucune erreur, avertissements DB intentionnels seulement.
+- [x] Calculer et conserver son SHA-256.
 - [ ] Soumettre le ZIP depuis le compte `xaere` sur `https://wordpress.org/plugins/developers/add/`.
 - [ ] Vérifier le slug proposé avant de confirmer la soumission.
 - [ ] Conserver l'e-mail de confirmation et suivre la file de review.
