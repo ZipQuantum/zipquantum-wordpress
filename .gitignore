@@ -1,0 +1,8 @@
+/vendor/
+/dist/
+/output/
+/.playwright-cli/
+/.phpunit.result.cache
+/.phpunit.cache/
+/.phpcs-cache
+*.log

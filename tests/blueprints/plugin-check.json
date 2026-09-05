@@ -1,0 +1,20 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "7.0.4"
+  },
+  "plugins": [
+    "plugin-check"
+  ],
+  "steps": [
+    {
+      "step": "activatePlugin",
+      "pluginPath": "/wordpress/wp-content/plugins/zipquantum-smart-links/zipquantum-smart-links.php"
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp plugin check zipquantum-smart-links --require=/wordpress/wp-content/plugins/plugin-check/cli.php"
+    }
+  ]
+}

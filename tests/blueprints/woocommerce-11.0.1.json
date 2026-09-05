@@ -1,0 +1,24 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "login": true,
+  "steps": [
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/plugin/woocommerce.11.0.1.zip"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "/wordpress/wp-content/plugins/zipquantum-smart-links/zipquantum-smart-links.php"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require_once '/wordpress/wp-load.php'; require_once ABSPATH . 'wp-admin/includes/plugin.php'; if (!class_exists('WooCommerce') || !class_exists('ZQ_WooCommerce')) { throw new Exception('WooCommerce integration was not loaded'); } if (!post_type_exists('product') || !taxonomy_exists('product_cat') || !function_exists('wc_get_coupon_id_by_code')) { throw new Exception('Required WooCommerce object APIs are unavailable'); } if (!is_plugin_active('zipquantum-smart-links/zipquantum-smart-links.php')) { throw new Exception('ZipQuantum plugin is not active'); } echo 'ZIPQUANTUM_WOOCOMMERCE_OK WooCommerce=' . WC_VERSION;"
+    }
+  ]
+}

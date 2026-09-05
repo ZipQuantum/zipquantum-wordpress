@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: zip
+          coverage: none
+      - uses: ramsey/composer-install@v3
+      - run: composer validate --strict
+      - run: composer lint
+      - run: composer test
+      - run: php bin/build.php
+      - run: unzip -t dist/zipquantum-smart-links.zip
+
+  php-syntax:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["7.4", "8.0", "8.2", "8.3"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - name: Lint production PHP
+        run: find . -path './vendor' -prune -o -path './tests' -prune -o -name '*.php' -print0 | xargs -0 -n1 php -l
+
+  wordpress-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        wordpress: ["6.9.7", "7.0.4", "7.1"]
+        php: ["7.4", "8.0", "8.2", "8.3"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Activate on WordPress ${{ matrix.wordpress }} and PHP ${{ matrix.php }}
+        run: >-
+          npx --yes @wp-playground/cli@latest run-blueprint
+          --wp=${{ matrix.wordpress }}
+          --php=${{ matrix.php }}
+          --blueprint=tests/blueprints/activation.json
+          --mount-dir "$GITHUB_WORKSPACE" /wordpress/wp-content/plugins/zipquantum-smart-links
+          --verbosity=quiet
+
+  woocommerce-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        blueprint: ["woocommerce-10.9.4.json", "woocommerce-11.0.1.json"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Load the conditional WooCommerce integration
+        run: >-
+          npx --yes @wp-playground/cli@latest run-blueprint
+          --wp=7.1
+          --php=8.3
+          --blueprint=tests/blueprints/${{ matrix.blueprint }}
+          --mount-dir "$GITHUB_WORKSPACE" /wordpress/wp-content/plugins/zipquantum-smart-links
+          --verbosity=quiet
+
+  forward-compatibility:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["8.4", "8.5"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Exercise WordPress 7.1 on PHP ${{ matrix.php }}
+        run: >-
+          npx --yes @wp-playground/cli@latest run-blueprint
+          --wp=7.1
+          --php=${{ matrix.php }}
+          --blueprint=tests/blueprints/activation.json
+          --mount-dir "$GITHUB_WORKSPACE" /wordpress/wp-content/plugins/zipquantum-smart-links
+          --verbosity=quiet
