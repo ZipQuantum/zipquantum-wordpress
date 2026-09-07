@@ -154,13 +154,25 @@ final class ZIPQUANTUM_Admin {
 	}
 
 	public function tools_page() {
-		$stats = ZIPQUANTUM_Queue::stats();
+
+		$stats         = ZIPQUANTUM_Queue::stats();
+		$status_labels = array(
+			'pending'     => __( 'Pending', 'zipquantum-smart-links' ),
+			'processing'  => __( 'Processing', 'zipquantum-smart-links' ),
+			'retry'       => __( 'Retry', 'zipquantum-smart-links' ),
+			'blocked'     => __( 'Blocked', 'zipquantum-smart-links' ),
+			'quarantined' => __( 'Quarantined', 'zipquantum-smart-links' ),
+			'failed'      => __( 'Failed', 'zipquantum-smart-links' ),
+			'complete'    => __( 'Complete', 'zipquantum-smart-links' ),
+		);
 		?>
 		<div class="wrap zipquantum-wrap"><h1><?php esc_html_e( 'ZipQuantum tools', 'zipquantum-smart-links' ); ?></h1>
 			<div class="zipquantum-card"><h2><?php esc_html_e( 'Synchronization queue', 'zipquantum-smart-links' ); ?></h2>
 				<div class="zipquantum-stat-grid">
-				<?php foreach ( array( 'pending', 'processing', 'retry', 'blocked', 'quarantined', 'failed', 'complete' ) as $status ) : ?>
-					<div><strong><?php echo esc_html( isset( $stats[ $status ] ) ? $stats[ $status ] : 0 ); ?></strong><span><?php echo esc_html( ucfirst( $status ) ); ?></span></div>
+				<?php
+				foreach ( $status_labels as $status => $label ) :
+					?>
+					<div><strong><?php echo esc_html( isset( $stats[ $status ] ) ? $stats[ $status ] : 0 ); ?></strong><span><?php echo esc_html( $label ); ?></span></div>
 				<?php endforeach; ?>
 				</div>
 				<a class="button" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=zipquantum_queue_retry' ), 'zipquantum_queue_retry' ) ); ?>"><?php esc_html_e( 'Retry failed', 'zipquantum-smart-links' ); ?></a>
