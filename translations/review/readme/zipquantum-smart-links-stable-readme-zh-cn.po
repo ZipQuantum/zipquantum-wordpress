@@ -1,0 +1,248 @@
+# Translation of ZipQuantum Stable Readme.
+# DRAFT: do not submit to WordPress.org before review by a fluent human translator.
+msgid ""
+msgstr ""
+"Project-Id-Version: ZipQuantum – Smart Links & QR Codes 1.0.0 Stable Readme\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/zipquantum-smart-links\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: HUMAN REVIEW REQUIRED\n"
+"Language-Team: Chinese (China)\n"
+"Language: zh-cn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: ZipQuantum Stable Readme translation draft builder\n"
+"X-Translation-Status: DRAFT - HUMAN REVIEW REQUIRED\n"
+
+#. Stable Readme string.
+msgid "Connect WordPress and WooCommerce content to ZipQuantum Smart Links and downloadable QR codes."
+msgstr "将 WordPress 和 WooCommerce 内容连接到 ZipQuantum 智能链接（Smart Links），并生成可下载的二维码。"
+
+#. Stable Readme string.
+msgid "ZipQuantum – Smart Links &amp; QR Codes"
+msgstr "ZipQuantum – 智能链接（Smart Links）和二维码"
+
+#. Stable Readme string.
+msgid "The settings screen keeps account, routing, and automation choices together, while each supported editor exposes its Smart Link and QR controls."
+msgstr "设置页面集中管理账户、路由和自动化选项，每个受支持的编辑器都会显示智能链接和二维码控件。"
+
+#. Stable Readme string.
+msgid "Setup instructions and integration guides are available at https://zq.tn/docs/cms-integrations/. They cover account connection, routing, synchronization, and WordPress/WooCommerce setup."
+msgstr "配置说明和集成指南位于 https://zq.tn/docs/cms-integrations/。内容涵盖账户连接、路由、同步以及 WordPress/WooCommerce 配置。"
+
+#. Stable Readme string.
+msgid "Documentation"
+msgstr "文档"
+
+#. Stable Readme string.
+msgid "Copy, download, or synchronize a post's Smart Link and QR code directly from the editor."
+msgstr "直接在编辑器中复制、下载或同步文章的智能链接和二维码。"
+
+#. Stable Readme string.
+msgid "Review the connected account, routing domains, and automatic content synchronization settings."
+msgstr "查看已连接账户、路由域名和内容自动同步设置。"
+
+#. Stable Readme string.
+msgid "Synchronization stops with an identity mismatch. An administrator can move the existing installation, create a new installation with quarantined local associations, or reconnect unchanged credentials."
+msgstr "当站点身份不匹配时，同步会停止。管理员可以迁移现有安装、创建一个将本地关联隔离的新安装，或使用未更改的凭据重新连接。"
+
+#. Stable Readme string.
+msgid "Yes. WooCommerce support is loaded only when WooCommerce is active."
+msgstr "可以。仅在 WooCommerce 启用时才会加载 WooCommerce 支持。"
+
+#. Stable Readme string.
+msgid "No. Remote Smart Links are never deleted. Local association metadata is retained by default and can be removed through the opt-in advanced setting before uninstalling."
+msgstr "不会。远程智能链接绝不会被删除。本地关联元数据默认保留，也可在卸载前通过可选的高级设置删除。"
+
+#. Stable Readme string.
+msgid "Only the local association metadata is removed. The remote ZipQuantum Smart Link is never deleted automatically."
+msgstr "只会删除本地关联元数据。远程 ZipQuantum 智能链接绝不会自动删除。"
+
+#. Stable Readme string.
+msgid "No. It does not add a visitor SDK, fingerprinting, advertising identifiers, or WordPress visitor analytics."
+msgstr "不会。它不会添加访客 SDK、设备指纹、广告标识符或 WordPress 访客分析。"
+
+#. Stable Readme string.
+msgid "What happens after cloning or moving a site?"
+msgstr "克隆或迁移站点后会发生什么？"
+
+#. Stable Readme string.
+msgid "Does it work without WooCommerce?"
+msgstr "没有 WooCommerce 也能使用吗？"
+
+#. Stable Readme string.
+msgid "Does uninstalling delete my Smart Links?"
+msgstr "卸载会删除我的智能链接吗？"
+
+#. Stable Readme string.
+msgid "What happens when WordPress content is deleted?"
+msgstr "删除 WordPress 内容后会发生什么？"
+
+#. Stable Readme string.
+msgid "Does this plugin install tracking?"
+msgstr "此插件会安装跟踪功能吗？"
+
+#. Stable Readme string.
+msgid "Network activation is not supported in version 1.0. On Multisite, activate and connect the plugin separately for each site."
+msgstr "1.0 版不支持全站网络启用。在多站点环境中，请为每个站点单独启用并连接插件。"
+
+#. Stable Readme string.
+msgid "Select content types and explicitly enable automatic creation if desired."
+msgstr "选择内容类型，并根据需要明确启用自动创建。"
+
+#. Stable Readme string.
+msgid "Choose a managed subdomain or verified custom domain."
+msgstr "选择托管子域名或已验证的自定义域名。"
+
+#. Stable Readme string.
+msgid "Select <strong>Connect ZipQuantum</strong> and approve access in the ZipQuantum window."
+msgstr "选择<strong>连接 ZipQuantum</strong>，然后在 ZipQuantum 窗口中批准访问。"
+
+#. Stable Readme string.
+msgid "Open <strong>Settings → ZipQuantum</strong>."
+msgstr "打开<strong>设置 → ZipQuantum</strong>。"
+
+#. Stable Readme string.
+msgid "Install and activate the plugin for one WordPress site."
+msgstr "在一个 WordPress 站点上安装并启用插件。"
+
+#. Stable Readme string.
+msgid "The plugin sends only the site and content information needed for the selected ZipQuantum features. See the External Service section for the complete disclosure."
+msgstr "插件只会发送所选 ZipQuantum 功能所需的站点和内容信息。完整说明请参阅“外部服务”部分。"
+
+#. Stable Readme string.
+msgid "Privacy Policy: https://zq.tn/privacy-policy/"
+msgstr "隐私政策：https://zq.tn/privacy-policy/"
+
+#. Stable Readme string.
+msgid "Terms of Service: https://zq.tn/terms-of-service/"
+msgstr "服务条款：https://zq.tn/terms-of-service/"
+
+#. Stable Readme string.
+msgid "Service: https://zq.tn/"
+msgstr "服务：https://zq.tn/"
+
+#. Stable Readme string.
+msgid "The plugin does not send WordPress visitor analytics, visitor fingerprints, advertising identifiers, or mobile SDK data to ZipQuantum."
+msgstr "插件不会向 ZipQuantum 发送 WordPress 访客分析、访客指纹、广告标识符或移动 SDK 数据。"
+
+#. Stable Readme string.
+msgid "Depending on the features you use, the plugin may send:"
+msgstr "根据您使用的功能，插件可能会发送："
+
+#. Stable Readme string.
+msgid "The service is required to:"
+msgstr "该服务用于："
+
+#. Stable Readme string.
+msgid "ZipQuantum – Smart Links &amp; QR Codes connects to the ZipQuantum service at <code>a.zq.tn</code> and <code>zq.tn</code>."
+msgstr "ZipQuantum – 智能链接和二维码会连接位于 <code>a.zq.tn</code> 和 <code>zq.tn</code> 的 ZipQuantum 服务。"
+
+#. Stable Readme string.
+msgid "A ZipQuantum account and the external ZipQuantum service are required. A Free plan is available; paid plans increase service limits. The plugin itself is not trialware."
+msgstr "需要 ZipQuantum 账户和 ZipQuantum 外部服务。可使用免费套餐；付费套餐可提高服务限额。插件本身并非试用软件。"
+
+#. Stable Readme string.
+msgid "Features include:"
+msgstr "功能包括："
+
+#. Stable Readme string.
+msgid "The plugin works with WordPress alone. When WooCommerce is active, it also supports products, product categories, coupons, and a Marketing menu entry."
+msgstr "本插件可单独与 WordPress 配合使用。启用 WooCommerce 后，还支持产品、产品分类、优惠券以及“营销”菜单项。"
+
+#. Stable Readme string.
+msgid "ZipQuantum turns published WordPress content into server-managed Smart Links. Connect a ZipQuantum account with OAuth, choose a verified or managed routing domain, then create or synchronize links from the editor or bulk tools."
+msgstr "ZipQuantum 将已发布的 WordPress 内容转换为由服务器管理的智能链接。通过 OAuth 连接 ZipQuantum 账户，选择已验证或托管的路由域名，然后从编辑器或批量工具创建或同步链接。"
+
+#. Stable Readme string.
+msgid "an installation UUID and security handoff values."
+msgstr "安装 UUID 和安全交接值。"
+
+#. Stable Readme string.
+msgid "routing configuration;"
+msgstr "路由配置；"
+
+#. Stable Readme string.
+msgid "WordPress and WooCommerce object identifiers;"
+msgstr "WordPress 和 WooCommerce 对象标识符；"
+
+#. Stable Readme string.
+msgid "featured image URLs;"
+msgstr "特色图片 URL；"
+
+#. Stable Readme string.
+msgid "content titles and descriptions;"
+msgstr "内容标题和描述；"
+
+#. Stable Readme string.
+msgid "WordPress content URLs;"
+msgstr "WordPress 内容 URL；"
+
+#. Stable Readme string.
+msgid "the WordPress site origin and path from <code>home_url()</code>;"
+msgstr "来自 <code>home_url()</code> 的 WordPress 站点来源和路径；"
+
+#. Stable Readme string.
+msgid "retrieve Smart Link analytics and account capabilities."
+msgstr "获取智能链接分析和账户功能。"
+
+#. Stable Readme string.
+msgid "generate QR codes;"
+msgstr "生成二维码；"
+
+#. Stable Readme string.
+msgid "create and synchronize Smart Links;"
+msgstr "创建和同步智能链接；"
+
+#. Stable Readme string.
+msgid "authenticate your ZipQuantum account;"
+msgstr "验证您的 ZipQuantum 账户；"
+
+#. Stable Readme string.
+msgid "No visitor fingerprinting, advertising identifiers, or visitor analytics added by this plugin."
+msgstr "本插件不会添加访客指纹、广告标识符或访客分析。"
+
+#. Stable Readme string.
+msgid "Clone and migration protection."
+msgstr "克隆和迁移保护。"
+
+#. Stable Readme string.
+msgid "A durable local queue with retries, WP-Cron, admin processing, Retry, and Resume."
+msgstr "具有重试、WP-Cron、后台处理、重试失败项和恢复功能的持久本地队列。"
+
+#. Stable Readme string.
+msgid "Simple click totals."
+msgstr "简明的点击总数。"
+
+#. Stable Readme string.
+msgid "Downloadable QR codes returned by ZipQuantum."
+msgstr "ZipQuantum 返回的可下载二维码。"
+
+#. Stable Readme string.
+msgid "Managed synchronization or read-only attachment to an existing Smart Link."
+msgstr "托管同步，或以只读方式关联现有智能链接。"
+
+#. Stable Readme string.
+msgid "Smart Links for posts, pages, public custom post types, products, categories, and coupons."
+msgstr "为文章、页面、公共自定义文章类型、产品、分类和优惠券创建智能链接。"
+
+#. Stable Readme string.
+msgid "OAuth public-client connection with PKCE and a central ZipQuantum callback."
+msgstr "使用 PKCE 和 ZipQuantum 中央回调的 OAuth 公共客户端连接。"
+
+#. Stable Readme string.
+msgid "Privacy"
+msgstr "隐私"
+
+#. Stable Readme string.
+msgid "External Service"
+msgstr "外部服务"
+
+#. Stable Readme string.
+msgid "Monitor the durable synchronization queue, resume blocked work, and retry explicit failures."
+msgstr "监控持久同步队列、恢复被阻止的任务，并重新尝试明确失败的项目。"
+
+#. Stable Readme string.
+msgid "Initial WordPress.org release."
+msgstr "WordPress.org 首次发布。"

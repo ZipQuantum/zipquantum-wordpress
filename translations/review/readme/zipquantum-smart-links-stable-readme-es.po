@@ -1,0 +1,248 @@
+# Translation of ZipQuantum Stable Readme.
+# DRAFT: do not submit to WordPress.org before review by a fluent human translator.
+msgid ""
+msgstr ""
+"Project-Id-Version: ZipQuantum – Smart Links & QR Codes 1.0.0 Stable Readme\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/zipquantum-smart-links\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: HUMAN REVIEW REQUIRED\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: ZipQuantum Stable Readme translation draft builder\n"
+"X-Translation-Status: DRAFT - HUMAN REVIEW REQUIRED\n"
+
+#. Stable Readme string.
+msgid "Connect WordPress and WooCommerce content to ZipQuantum Smart Links and downloadable QR codes."
+msgstr "Conecta el contenido de WordPress y WooCommerce con los Smart Links (enlaces inteligentes) de ZipQuantum y códigos QR descargables."
+
+#. Stable Readme string.
+msgid "ZipQuantum – Smart Links &amp; QR Codes"
+msgstr "ZipQuantum – Smart Links y códigos QR"
+
+#. Stable Readme string.
+msgid "The settings screen keeps account, routing, and automation choices together, while each supported editor exposes its Smart Link and QR controls."
+msgstr "La pantalla de ajustes reúne las opciones de cuenta, enrutamiento y automatización, mientras que cada editor compatible muestra sus controles de enlace inteligente y código QR."
+
+#. Stable Readme string.
+msgid "Setup instructions and integration guides are available at https://zq.tn/docs/cms-integrations/. They cover account connection, routing, synchronization, and WordPress/WooCommerce setup."
+msgstr "Las instrucciones de configuración y las guías de integración están disponibles en https://zq.tn/docs/cms-integrations/. Incluyen la conexión de la cuenta, el enrutamiento, la sincronización y la configuración de WordPress/WooCommerce."
+
+#. Stable Readme string.
+msgid "Documentation"
+msgstr "Documentación"
+
+#. Stable Readme string.
+msgid "Copy, download, or synchronize a post's Smart Link and QR code directly from the editor."
+msgstr "Copia, descarga o sincroniza el enlace inteligente y el código QR de una entrada directamente desde el editor."
+
+#. Stable Readme string.
+msgid "Review the connected account, routing domains, and automatic content synchronization settings."
+msgstr "Revisa la cuenta conectada, los dominios de enrutamiento y los ajustes de sincronización automática del contenido."
+
+#. Stable Readme string.
+msgid "Synchronization stops with an identity mismatch. An administrator can move the existing installation, create a new installation with quarantined local associations, or reconnect unchanged credentials."
+msgstr "La sincronización se detiene si la identidad del sitio no coincide. Un administrador puede trasladar la instalación existente, crear una nueva instalación con las asociaciones locales en cuarentena o volver a conectar las credenciales sin cambios."
+
+#. Stable Readme string.
+msgid "Yes. WooCommerce support is loaded only when WooCommerce is active."
+msgstr "Sí. La compatibilidad con WooCommerce solo se carga cuando WooCommerce está activo."
+
+#. Stable Readme string.
+msgid "No. Remote Smart Links are never deleted. Local association metadata is retained by default and can be removed through the opt-in advanced setting before uninstalling."
+msgstr "No. Los enlaces inteligentes remotos nunca se eliminan. Los metadatos de asociación locales se conservan de forma predeterminada y pueden eliminarse mediante el ajuste avanzado opcional antes de desinstalar."
+
+#. Stable Readme string.
+msgid "Only the local association metadata is removed. The remote ZipQuantum Smart Link is never deleted automatically."
+msgstr "Solo se eliminan los metadatos de asociación locales. El enlace inteligente remoto de ZipQuantum nunca se elimina automáticamente."
+
+#. Stable Readme string.
+msgid "No. It does not add a visitor SDK, fingerprinting, advertising identifiers, or WordPress visitor analytics."
+msgstr "No. No añade un SDK de visitantes, huellas digitales, identificadores publicitarios ni analítica de visitantes de WordPress."
+
+#. Stable Readme string.
+msgid "What happens after cloning or moving a site?"
+msgstr "¿Qué ocurre después de clonar o trasladar un sitio?"
+
+#. Stable Readme string.
+msgid "Does it work without WooCommerce?"
+msgstr "¿Funciona sin WooCommerce?"
+
+#. Stable Readme string.
+msgid "Does uninstalling delete my Smart Links?"
+msgstr "¿La desinstalación elimina mis enlaces inteligentes?"
+
+#. Stable Readme string.
+msgid "What happens when WordPress content is deleted?"
+msgstr "¿Qué ocurre cuando se elimina contenido de WordPress?"
+
+#. Stable Readme string.
+msgid "Does this plugin install tracking?"
+msgstr "¿Este plugin instala seguimiento?"
+
+#. Stable Readme string.
+msgid "Network activation is not supported in version 1.0. On Multisite, activate and connect the plugin separately for each site."
+msgstr "La activación en red no es compatible con la versión 1.0. En Multisite, activa y conecta el plugin por separado en cada sitio."
+
+#. Stable Readme string.
+msgid "Select content types and explicitly enable automatic creation if desired."
+msgstr "Selecciona los tipos de contenido y activa expresamente la creación automática si lo deseas."
+
+#. Stable Readme string.
+msgid "Choose a managed subdomain or verified custom domain."
+msgstr "Elige un subdominio gestionado o un dominio personalizado verificado."
+
+#. Stable Readme string.
+msgid "Select <strong>Connect ZipQuantum</strong> and approve access in the ZipQuantum window."
+msgstr "Selecciona <strong>Conectar ZipQuantum</strong> y aprueba el acceso en la ventana de ZipQuantum."
+
+#. Stable Readme string.
+msgid "Open <strong>Settings → ZipQuantum</strong>."
+msgstr "Abre <strong>Ajustes → ZipQuantum</strong>."
+
+#. Stable Readme string.
+msgid "Install and activate the plugin for one WordPress site."
+msgstr "Instala y activa el plugin en un sitio WordPress."
+
+#. Stable Readme string.
+msgid "The plugin sends only the site and content information needed for the selected ZipQuantum features. See the External Service section for the complete disclosure."
+msgstr "El plugin solo envía la información del sitio y del contenido necesaria para las funciones seleccionadas de ZipQuantum. Consulta la sección Servicio externo para conocer todos los detalles."
+
+#. Stable Readme string.
+msgid "Privacy Policy: https://zq.tn/privacy-policy/"
+msgstr "Política de privacidad: https://zq.tn/privacy-policy/"
+
+#. Stable Readme string.
+msgid "Terms of Service: https://zq.tn/terms-of-service/"
+msgstr "Términos del servicio: https://zq.tn/terms-of-service/"
+
+#. Stable Readme string.
+msgid "Service: https://zq.tn/"
+msgstr "Servicio: https://zq.tn/"
+
+#. Stable Readme string.
+msgid "The plugin does not send WordPress visitor analytics, visitor fingerprints, advertising identifiers, or mobile SDK data to ZipQuantum."
+msgstr "El plugin no envía a ZipQuantum analítica de visitantes de WordPress, huellas digitales, identificadores publicitarios ni datos de SDK móviles."
+
+#. Stable Readme string.
+msgid "Depending on the features you use, the plugin may send:"
+msgstr "Según las funciones que utilices, el plugin puede enviar:"
+
+#. Stable Readme string.
+msgid "The service is required to:"
+msgstr "El servicio es necesario para:"
+
+#. Stable Readme string.
+msgid "ZipQuantum – Smart Links &amp; QR Codes connects to the ZipQuantum service at <code>a.zq.tn</code> and <code>zq.tn</code>."
+msgstr "ZipQuantum – Enlaces inteligentes y códigos QR se conecta al servicio ZipQuantum en <code>a.zq.tn</code> y <code>zq.tn</code>."
+
+#. Stable Readme string.
+msgid "A ZipQuantum account and the external ZipQuantum service are required. A Free plan is available; paid plans increase service limits. The plugin itself is not trialware."
+msgstr "Se necesita una cuenta de ZipQuantum y el servicio externo de ZipQuantum. Hay un plan gratuito disponible; los planes de pago aumentan los límites del servicio. El plugin no es una versión de prueba."
+
+#. Stable Readme string.
+msgid "Features include:"
+msgstr "Características:"
+
+#. Stable Readme string.
+msgid "The plugin works with WordPress alone. When WooCommerce is active, it also supports products, product categories, coupons, and a Marketing menu entry."
+msgstr "El plugin funciona solo con WordPress. Cuando WooCommerce está activo, también admite productos, categorías de productos, cupones y una entrada en el menú Marketing."
+
+#. Stable Readme string.
+msgid "ZipQuantum turns published WordPress content into server-managed Smart Links. Connect a ZipQuantum account with OAuth, choose a verified or managed routing domain, then create or synchronize links from the editor or bulk tools."
+msgstr "ZipQuantum convierte el contenido publicado de WordPress en enlaces inteligentes gestionados por el servidor. Conecta una cuenta de ZipQuantum mediante OAuth, elige un dominio de enrutamiento verificado o gestionado y crea o sincroniza enlaces desde el editor o las herramientas por lotes."
+
+#. Stable Readme string.
+msgid "an installation UUID and security handoff values."
+msgstr "un UUID de instalación y valores de transferencia de seguridad."
+
+#. Stable Readme string.
+msgid "routing configuration;"
+msgstr "la configuración de enrutamiento;"
+
+#. Stable Readme string.
+msgid "WordPress and WooCommerce object identifiers;"
+msgstr "los identificadores de objetos de WordPress y WooCommerce;"
+
+#. Stable Readme string.
+msgid "featured image URLs;"
+msgstr "las URL de las imágenes destacadas;"
+
+#. Stable Readme string.
+msgid "content titles and descriptions;"
+msgstr "los títulos y las descripciones del contenido;"
+
+#. Stable Readme string.
+msgid "WordPress content URLs;"
+msgstr "las URL del contenido de WordPress;"
+
+#. Stable Readme string.
+msgid "the WordPress site origin and path from <code>home_url()</code>;"
+msgstr "el origen y la ruta del sitio WordPress obtenidos de <code>home_url()</code>;"
+
+#. Stable Readme string.
+msgid "retrieve Smart Link analytics and account capabilities."
+msgstr "recuperar las estadísticas de los enlaces inteligentes y las capacidades de la cuenta."
+
+#. Stable Readme string.
+msgid "generate QR codes;"
+msgstr "generar códigos QR;"
+
+#. Stable Readme string.
+msgid "create and synchronize Smart Links;"
+msgstr "crear y sincronizar enlaces inteligentes;"
+
+#. Stable Readme string.
+msgid "authenticate your ZipQuantum account;"
+msgstr "autenticar tu cuenta de ZipQuantum;"
+
+#. Stable Readme string.
+msgid "No visitor fingerprinting, advertising identifiers, or visitor analytics added by this plugin."
+msgstr "Este plugin no añade huellas digitales de visitantes, identificadores publicitarios ni analítica de visitantes."
+
+#. Stable Readme string.
+msgid "Clone and migration protection."
+msgstr "Protección frente a clonación y migración."
+
+#. Stable Readme string.
+msgid "A durable local queue with retries, WP-Cron, admin processing, Retry, and Resume."
+msgstr "Una cola local persistente con reintentos, WP-Cron, procesamiento desde la administración, Reintentar y Reanudar."
+
+#. Stable Readme string.
+msgid "Simple click totals."
+msgstr "Totales de clics sencillos."
+
+#. Stable Readme string.
+msgid "Downloadable QR codes returned by ZipQuantum."
+msgstr "Códigos QR descargables proporcionados por ZipQuantum."
+
+#. Stable Readme string.
+msgid "Managed synchronization or read-only attachment to an existing Smart Link."
+msgstr "Sincronización gestionada o asociación de solo lectura con un enlace inteligente existente."
+
+#. Stable Readme string.
+msgid "Smart Links for posts, pages, public custom post types, products, categories, and coupons."
+msgstr "Enlaces inteligentes para entradas, páginas, tipos de contenido personalizados públicos, productos, categorías y cupones."
+
+#. Stable Readme string.
+msgid "OAuth public-client connection with PKCE and a central ZipQuantum callback."
+msgstr "Conexión OAuth como cliente público con PKCE y una devolución de llamada central de ZipQuantum."
+
+#. Stable Readme string.
+msgid "Privacy"
+msgstr "Privacidad"
+
+#. Stable Readme string.
+msgid "External Service"
+msgstr "Servicio externo"
+
+#. Stable Readme string.
+msgid "Monitor the durable synchronization queue, resume blocked work, and retry explicit failures."
+msgstr "Supervisa la cola de sincronización persistente, reanuda el trabajo bloqueado y vuelve a intentar los errores explícitos."
+
+#. Stable Readme string.
+msgid "Initial WordPress.org release."
+msgstr "Versión inicial en WordPress.org."

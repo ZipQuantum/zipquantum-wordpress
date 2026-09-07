@@ -7,7 +7,7 @@ reviewed by a fluent speaker before they are submitted to the translation projec
 
 For each locale, a fluent reviewer must:
 
-- compare all 78 translations with the English source;
+- compare all 78 interface translations and all 58 public-page translations with the English sources;
 - preserve the product names `ZipQuantum`, `Smart Link`, `WordPress`, and
   `WooCommerce` where appropriate;
 - verify that URLs, punctuation, and interface terminology remain accurate;
@@ -21,8 +21,17 @@ For each locale, a fluent reviewer must:
 | Simplified Chinese (`zh_CN`) | `review/zipquantum-smart-links-zh_CN.po` |  |  | No |
 | Arabic (`ar`) | `review/zipquantum-smart-links-ar.po` |  |  | No |
 
+## Public WordPress.org page (Stable Readme)
+
+| Locale | File | Reviewer | Date | Approved |
+| --- | --- | --- | --- | --- |
+| French (`fr`) | `review/readme/zipquantum-smart-links-stable-readme-fr.po` |  |  | No |
+| Spanish (`es`) | `review/readme/zipquantum-smart-links-stable-readme-es.po` |  |  | No |
+| Simplified Chinese (`zh-cn`) | `review/readme/zipquantum-smart-links-stable-readme-zh-cn.po` |  |  | No |
+| Arabic (`ar`) | `review/readme/zipquantum-smart-links-stable-readme-ar.po` |  |  | No |
+
 Arabic must also be reviewed visually in right-to-left mode.
 
-After approval, import the reviewed PO file into the **Stable** and
-**Development** branches of the plugin's WordPress.org translation project. The
-Stable Readme strings are translated separately in GlotPress.
+After approval, import the interface PO file into the **Stable** and
+**Development** branches of the plugin's WordPress.org translation project, and
+the public-page PO file into **Stable Readme** and **Development Readme**.
