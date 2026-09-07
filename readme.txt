@@ -31,7 +31,7 @@ A ZipQuantum account and the external ZipQuantum service are required. A Free pl
 
 == Documentation ==
 
-Setup instructions and integration guides are available at https://zq.tn/docs/cms-integrations/.
+Setup instructions and integration guides are available at https://zq.tn/docs/cms-integrations/. They cover account connection, routing, synchronization, and WordPress/WooCommerce setup.
 
 == External Service ==
 
