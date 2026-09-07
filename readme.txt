@@ -16,6 +16,8 @@ ZipQuantum turns published WordPress content into server-managed Smart Links. Co
 
 The plugin works with WordPress alone. When WooCommerce is active, it also supports products, product categories, coupons, and a Marketing menu entry.
 
+The settings screen keeps account, routing, and automation choices together, while each supported editor exposes its Smart Link and QR controls.
+
 Features include:
 
 * OAuth public-client connection with PKCE and a central ZipQuantum callback.
