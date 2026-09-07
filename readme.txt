@@ -29,6 +29,10 @@ Features include:
 
 A ZipQuantum account and the external ZipQuantum service are required. A Free plan is available; paid plans increase service limits. The plugin itself is not trialware.
 
+== Documentation ==
+
+Setup instructions and integration guides are available at https://zq.tn/docs/cms-integrations/.
+
 == External Service ==
 
 ZipQuantum – Smart Links & QR Codes connects to the ZipQuantum service at `a.zq.tn` and `zq.tn`.
@@ -92,8 +96,9 @@ Synchronization stops with an identity mismatch. An administrator can move the e
 
 == Screenshots ==
 
-1. Connect ZipQuantum, choose routing, and select the WordPress content types to synchronize.
+1. Review the connected account, routing domains, and automatic content synchronization settings.
 2. Monitor the durable synchronization queue, resume blocked work, and retry explicit failures.
+3. Copy, download, or synchronize a post's Smart Link and QR code directly from the editor.
 
 == Privacy ==
 
