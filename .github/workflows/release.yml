@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Fail-closed secret and sensitive-file gate
+        run: node scripts/secret-scan.mjs
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
@@ -20,12 +25,18 @@ jobs:
           coverage: none
       - uses: ramsey/composer-install@v3
       - run: composer validate --strict
+      - run: composer audit --locked --no-interaction
       - run: composer lint
       - run: composer test
       - run: php bin/build.php
       - run: unzip -t dist/zipquantum-smart-links.zip
-      - name: Generate checksum
-        run: sha256sum dist/zipquantum-smart-links.zip > dist/zipquantum-smart-links.zip.sha256
+      - name: Verify generated checksum and clean-tree manifest
+        run: |
+          archive_hash="$(sha256sum dist/zipquantum-smart-links.zip | awk '{print $1}')"
+          expected_hash="$(awk 'NR==1 {print $1}' dist/zipquantum-smart-links.zip.sha256)"
+          test "$archive_hash" = "$expected_hash"
+          (cd dist && sha256sum -c zipquantum-smart-links.SHA256SUMS)
+          php -r '$m=json_decode(file_get_contents("dist/zipquantum-smart-links.manifest.json"),true,32,JSON_THROW_ON_ERROR); if (($m["dirty_override"]??true) || ($m["file_count"]??0)<1) exit(1);'
       - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -34,11 +45,15 @@ jobs:
             gh release upload "${GITHUB_REF_NAME}" \
               dist/zipquantum-smart-links.zip \
               dist/zipquantum-smart-links.zip.sha256 \
+              dist/zipquantum-smart-links.SHA256SUMS \
+              dist/zipquantum-smart-links.manifest.json \
               --clobber
           else
             gh release create "${GITHUB_REF_NAME}" \
               dist/zipquantum-smart-links.zip \
               dist/zipquantum-smart-links.zip.sha256 \
+              dist/zipquantum-smart-links.SHA256SUMS \
+              dist/zipquantum-smart-links.manifest.json \
               --generate-notes \
               --title "ZipQuantum for WordPress ${GITHUB_REF_NAME}"
           fi
