@@ -8,37 +8,65 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: wordpress-release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: wordpress-release
     steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: Fail-closed secret and sensitive-file gate
+        run: node scripts/secret-scan.mjs
+      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
         with:
           php-version: '8.2'
           extensions: zip
           coverage: none
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@a8d0d959dab41457692a5e2041bd9b757a119e3f # 3.2.1
       - run: composer validate --strict
+      - run: composer audit --locked --no-interaction
       - run: composer lint
       - run: composer test
+      - name: Match release tag, plugin header, and WordPress stable tag
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          php -r '
+          $expected = preg_replace("/^v/", "", getenv("RELEASE_TAG"));
+          preg_match("/^ \\* Version:\\s*(\\S+)/m", file_get_contents("zipquantum-smart-links.php"), $plugin);
+          preg_match("/^Stable tag:\\s*(\\S+)/mi", file_get_contents("readme.txt"), $readme);
+          if (($plugin[1] ?? "") !== $expected || ($readme[1] ?? "") !== $expected) {
+              fwrite(STDERR, "Release tag, plugin Version, and Stable tag must match.\\n");
+              exit(65);
+          }'
       - run: php bin/build.php
       - run: unzip -t dist/zipquantum-smart-links.zip
-      - name: Generate checksum
-        run: sha256sum dist/zipquantum-smart-links.zip > dist/zipquantum-smart-links.zip.sha256
+      - name: Verify generated checksum and clean-tree manifest
+        run: |
+          archive_hash="$(sha256sum dist/zipquantum-smart-links.zip | awk '{print $1}')"
+          expected_hash="$(awk 'NR==1 {print $1}' dist/zipquantum-smart-links.zip.sha256)"
+          test "$archive_hash" = "$expected_hash"
+          (cd dist && sha256sum -c zipquantum-smart-links.SHA256SUMS)
+          php -r '$m=json_decode(file_get_contents("dist/zipquantum-smart-links.manifest.json"),true,32,JSON_THROW_ON_ERROR); if (($m["dirty_override"]??true) || ($m["file_count"]??0)<1) exit(1);'
       - name: Publish GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
-            gh release upload "${GITHUB_REF_NAME}" \
-              dist/zipquantum-smart-links.zip \
-              dist/zipquantum-smart-links.zip.sha256 \
-              --clobber
-          else
-            gh release create "${GITHUB_REF_NAME}" \
-              dist/zipquantum-smart-links.zip \
-              dist/zipquantum-smart-links.zip.sha256 \
-              --generate-notes \
-              --title "ZipQuantum for WordPress ${GITHUB_REF_NAME}"
+            echo "Release ${GITHUB_REF_NAME} already exists; refusing to replace immutable assets." >&2
+            exit 65
           fi
+          gh release create "${GITHUB_REF_NAME}" \
+            dist/zipquantum-smart-links.zip \
+            dist/zipquantum-smart-links.zip.sha256 \
+            dist/zipquantum-smart-links.SHA256SUMS \
+            dist/zipquantum-smart-links.manifest.json \
+            --generate-notes \
+            --title "ZipQuantum for WordPress ${GITHUB_REF_NAME}"

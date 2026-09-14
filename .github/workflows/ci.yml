@@ -7,32 +7,61 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: wordpress-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  quality:
+  security:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: Fail-closed secret and sensitive-file gate
+        run: node scripts/secret-scan.mjs
+      - name: Reject whitespace and merge-marker damage
+        run: git diff --check
+
+  quality:
+    needs: security
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
         with:
           php-version: "8.2"
           extensions: zip
           coverage: none
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@a8d0d959dab41457692a5e2041bd9b757a119e3f # 3.2.1
       - run: composer validate --strict
+      - run: composer audit --locked --no-interaction
       - run: composer lint
       - run: composer test
       - run: php bin/build.php
       - run: unzip -t dist/zipquantum-smart-links.zip
+      - name: Verify tracked-only package manifest
+        run: |
+          test "$(sha256sum dist/zipquantum-smart-links.zip | awk '{print $1}')" = "$(awk 'NR==1 {print $1}' dist/zipquantum-smart-links.zip.sha256)"
+          (cd dist && sha256sum -c zipquantum-smart-links.SHA256SUMS)
+          php -r '$m=json_decode(file_get_contents("dist/zipquantum-smart-links.manifest.json"),true,32,JSON_THROW_ON_ERROR); if (($m["dirty_override"]??true) || ($m["file_count"]??0)<1) exit(1);'
 
   php-syntax:
+    needs: security
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
         php: ["7.4", "8.0", "8.2", "8.3"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
         with:
           php-version: ${{ matrix.php }}
           coverage: none
@@ -40,20 +69,22 @@ jobs:
         run: find . -path './vendor' -prune -o -path './tests' -prune -o -name '*.php' -print0 | xargs -0 -n1 php -l
 
   wordpress-matrix:
+    needs: security
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
         wordpress: ["6.9.7", "7.0.4", "7.1"]
         php: ["7.4", "8.0", "8.2", "8.3"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "22"
       - name: Activate on WordPress ${{ matrix.wordpress }} and PHP ${{ matrix.php }}
         run: >-
-          npx --yes @wp-playground/cli@latest run-blueprint
+          npx --yes @wp-playground/cli@3.1.53 run-blueprint
           --wp=${{ matrix.wordpress }}
           --php=${{ matrix.php }}
           --blueprint=tests/blueprints/activation.json
@@ -61,19 +92,21 @@ jobs:
           --verbosity=quiet
 
   woocommerce-matrix:
+    needs: security
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
         blueprint: ["woocommerce-10.9.4.json", "woocommerce-11.0.1.json"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "22"
       - name: Load the conditional WooCommerce integration
         run: >-
-          npx --yes @wp-playground/cli@latest run-blueprint
+          npx --yes @wp-playground/cli@3.1.53 run-blueprint
           --wp=7.1
           --php=8.3
           --blueprint=tests/blueprints/${{ matrix.blueprint }}
@@ -81,20 +114,22 @@ jobs:
           --verbosity=quiet
 
   forward-compatibility:
+    needs: security
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
         php: ["8.4", "8.5"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: "22"
       - name: Exercise WordPress 7.1 on PHP ${{ matrix.php }}
         run: >-
-          npx --yes @wp-playground/cli@latest run-blueprint
+          npx --yes @wp-playground/cli@3.1.53 run-blueprint
           --wp=7.1
           --php=${{ matrix.php }}
           --blueprint=tests/blueprints/activation.json
