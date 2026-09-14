@@ -11,6 +11,10 @@ WordPress CI now runs a redacting secret/path gate before quality and compatibil
 
 `ZQ_ALLOW_DIRTY_BUILD=1` is for a local non-release test only. The manifest records the override and release CI rejects it.
 
+The release workflow uses a protected `wordpress-release` environment, refuses to overwrite an existing GitHub Release, and requires the `v*` tag to match both the plugin `Version` header and the WordPress `Stable tag`. Configure required reviewers and protected `v*` tags in GitHub before pushing any release tag; the workflow file cannot enforce those repository settings by itself.
+
+The repository `.gitattributes` fixes source and workflow files to LF so PHPCS and Linux CI do not depend on a developer's `core.autocrlf` setting. Existing Windows worktrees may need a fresh checkout or an explicitly reviewed renormalization; do not mix that mechanical rewrite into a functional release commit.
+
 The installable ZIP and a live-runtime hotfix artefact are separate deliverables. For a reviewed runtime allowlist, create a checked-in plan under `scripts/release/plans/`, then run the shared tools from this repository so Git provenance resolves against WordPress:
 
 ```powershell
