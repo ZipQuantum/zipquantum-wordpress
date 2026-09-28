@@ -4,7 +4,7 @@ Tags: smart links, deep links, qr code, woocommerce, marketing
 Requires at least: 6.9
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,11 @@ Synchronization stops with an identity mismatch. An administrator can move the e
 The plugin sends only the site and content information needed for the selected ZipQuantum features. See the External Service section for the complete disclosure.
 
 == Changelog ==
+
+= 1.0.1 =
+
+* Make synchronization queue status labels fully translatable.
+* Verify compatibility with WordPress 7.1 and WooCommerce 11.1.
 
 = 1.0.0 =
 
