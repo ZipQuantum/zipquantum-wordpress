@@ -17,6 +17,18 @@ final class SmokeTest extends TestCase {
 		$this->assertStringContainsString( 'License: GPL-2.0-or-later', $contents );
 	}
 
+	public function test_release_versions_are_aligned(): void {
+		$root   = dirname( __DIR__ );
+		$plugin = file_get_contents( $root . '/zipquantum-smart-links.php' );
+		$readme = file_get_contents( $root . '/readme.txt' );
+		$pot    = file_get_contents( $root . '/languages/zipquantum-smart-links.pot' );
+
+		$this->assertMatchesRegularExpression( '/^ \* Version: 1\.0\.1$/m', $plugin );
+		$this->assertStringContainsString( "ZIPQUANTUM_SMART_LINKS_VERSION', '1.0.1'", $plugin );
+		$this->assertMatchesRegularExpression( '/^Stable tag: 1\.0\.1$/m', $readme );
+		$this->assertStringContainsString( 'ZipQuantum – Smart Links & QR Codes 1.0.1', $pot );
+	}
+
 	public function test_readme_discloses_external_service_and_no_tracking(): void {
 
 		$contents = file_get_contents( dirname( __DIR__ ) . '/readme.txt' );
