@@ -51,8 +51,8 @@ if ( ! is_dir( $dist ) && ! mkdir( $dist, 0777, true ) && ! is_dir( $dist ) ) {
 	exit( 1 );
 }
 
-$excluded_roots = array( '.github', 'bin', 'dist', 'docs', 'output', 'scripts', 'tests', 'wordpress-org-assets' );
-$excluded_files = array( '.gitignore', 'composer.json', 'composer.lock', 'phpcs.xml.dist', 'phpunit.xml.dist', 'README.md' );
+$excluded_roots = array( '.github', 'bin', 'dist', 'docs', 'output', 'scripts', 'tests', 'translations', 'wordpress-org-assets' );
+$excluded_files = array( '.gitattributes', '.gitignore', 'composer.json', 'composer.lock', 'phpcs.xml.dist', 'phpunit.xml.dist', 'README.md' );
 $tracked        = array_values( array_filter( explode( "\0", zq_git( array( 'ls-files', '-z', '--' ), $root ) ) ) );
 sort( $tracked, SORT_STRING );
 

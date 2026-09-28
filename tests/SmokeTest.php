@@ -23,10 +23,21 @@ final class SmokeTest extends TestCase {
 		$readme = file_get_contents( $root . '/readme.txt' );
 		$pot    = file_get_contents( $root . '/languages/zipquantum-smart-links.pot' );
 
-		$this->assertMatchesRegularExpression( '/^ \* Version: 1\.0\.1$/m', $plugin );
-		$this->assertStringContainsString( "ZIPQUANTUM_SMART_LINKS_VERSION', '1.0.1'", $plugin );
-		$this->assertMatchesRegularExpression( '/^Stable tag: 1\.0\.1$/m', $readme );
-		$this->assertStringContainsString( 'ZipQuantum – Smart Links & QR Codes 1.0.1', $pot );
+		$this->assertSame( 1, preg_match( '/^ \* Version: (\S+)$/m', $plugin, $plugin_version ) );
+		$this->assertSame( 1, preg_match( "/ZIPQUANTUM_SMART_LINKS_VERSION', '([^']+)'/", $plugin, $constant_version ) );
+		$this->assertSame( 1, preg_match( '/^Stable tag: (\S+)$/m', $readme, $stable_version ) );
+		$this->assertSame( 1, preg_match( '/Project-Id-Version: ZipQuantum – Smart Links & QR Codes (\S+)\\\\n/', $pot, $pot_version ) );
+
+		$this->assertSame( $plugin_version[1], $constant_version[1] );
+		$this->assertSame( $plugin_version[1], $stable_version[1] );
+		$this->assertSame( $plugin_version[1], $pot_version[1] );
+	}
+
+	public function test_package_builder_excludes_development_only_files(): void {
+		$builder = file_get_contents( dirname( __DIR__ ) . '/bin/build.php' );
+
+		$this->assertStringContainsString( "'translations'", $builder );
+		$this->assertStringContainsString( "'.gitattributes'", $builder );
 	}
 
 	public function test_readme_discloses_external_service_and_no_tracking(): void {
